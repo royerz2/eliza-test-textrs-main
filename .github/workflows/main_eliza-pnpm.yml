@@ -25,7 +25,7 @@ jobs:
       # We will not remove pnpm-lock.yaml here. If it exists, it helps ensure consistent installs.
       # If it doesn't exist yet, pnpm will create it on install.
       - name: Install dependencies
-        run: pnpm install --ignore-engines
+        run: pnpm install
 
       - name: Build
         run: pnpm build
