@@ -1,4 +1,4 @@
-[@ai16z/eliza v0.1.5-alpha.3](../index.md) / GenerationOptions
+[@ai16z/eliza v0.1.5-alpha.5](../index.md) / GenerationOptions
 
 # Interface: GenerationOptions
 
@@ -12,7 +12,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1058](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1058)
+[packages/core/src/generation.ts:1198](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1198)
 
 ***
 
@@ -22,7 +22,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1059](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1059)
+[packages/core/src/generation.ts:1199](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1199)
 
 ***
 
@@ -32,7 +32,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1060](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1060)
+[packages/core/src/generation.ts:1200](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1200)
 
 ***
 
@@ -42,7 +42,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1061](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1061)
+[packages/core/src/generation.ts:1201](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1201)
 
 ***
 
@@ -52,7 +52,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1062](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1062)
+[packages/core/src/generation.ts:1202](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1202)
 
 ***
 
@@ -62,7 +62,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1063](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1063)
+[packages/core/src/generation.ts:1203](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1203)
 
 ***
 
@@ -72,7 +72,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1064](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1064)
+[packages/core/src/generation.ts:1204](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1204)
 
 ***
 
@@ -82,7 +82,7 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1065](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1065)
+[packages/core/src/generation.ts:1205](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1205)
 
 ***
 
@@ -92,4 +92,4 @@ Configuration options for generating objects with a model.
 
 #### Defined in
 
-[packages/core/src/generation.ts:1066](https://github.com/monilpat/eliza/blob/main/packages/core/src/generation.ts#L1066)
+[packages/core/src/generation.ts:1206](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/generation.ts#L1206)

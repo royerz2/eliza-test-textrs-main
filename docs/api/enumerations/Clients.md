@@ -1,4 +1,4 @@
-[@ai16z/eliza v0.1.5-alpha.3](../index.md) / Clients
+[@ai16z/eliza v0.1.5-alpha.5](../index.md) / Clients
 
 # Enumeration: Clients
 
@@ -12,17 +12,7 @@ Available client platforms
 
 #### Defined in
 
-[packages/core/src/types.ts:601](https://github.com/monilpat/eliza/blob/main/packages/core/src/types.ts#L601)
-
-***
-
-### DIRECT
-
-> **DIRECT**: `"direct"`
-
-#### Defined in
-
-[packages/core/src/types.ts:602](https://github.com/monilpat/eliza/blob/main/packages/core/src/types.ts#L602)
+[packages/core/src/types.ts:607](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L607)
 
 ***
 
@@ -30,9 +20,13 @@ Available client platforms
 
 > **TWITTER**: `"twitter"`
 
+you can't specify this in characters
+all characters are registered with this
+   DIRECT = "direct",
+
 #### Defined in
 
-[packages/core/src/types.ts:603](https://github.com/monilpat/eliza/blob/main/packages/core/src/types.ts#L603)
+[packages/core/src/types.ts:611](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L611)
 
 ***
 
@@ -42,4 +36,14 @@ Available client platforms
 
 #### Defined in
 
-[packages/core/src/types.ts:604](https://github.com/monilpat/eliza/blob/main/packages/core/src/types.ts#L604)
+[packages/core/src/types.ts:612](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L612)
+
+***
+
+### FARCASTER
+
+> **FARCASTER**: `"farcaster"`
+
+#### Defined in
+
+[packages/core/src/types.ts:613](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L613)

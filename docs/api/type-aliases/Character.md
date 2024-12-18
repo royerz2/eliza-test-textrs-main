@@ -1,4 +1,4 @@
-[@ai16z/eliza v0.1.5-alpha.3](../index.md) / Character
+[@ai16z/eliza v0.1.5-alpha.5](../index.md) / Character
 
 # Type Alias: Character
 
@@ -196,9 +196,9 @@ Optional configuration
 
  \[`key`: `string`\]: `string`
 
-### settings.buttplug?
+### settings.intiface?
 
-> `optional` **buttplug**: `boolean`
+> `optional` **intiface**: `boolean`
 
 ### settings.voice?
 
@@ -284,6 +284,26 @@ Optional client-specific config
 
 > `optional` **shouldIgnoreDirectMessages**: `boolean`
 
+### clientConfig.discord.messageSimilarityThreshold?
+
+> `optional` **messageSimilarityThreshold**: `number`
+
+### clientConfig.discord.isPartOfTeam?
+
+> `optional` **isPartOfTeam**: `boolean`
+
+### clientConfig.discord.teamAgentIds?
+
+> `optional` **teamAgentIds**: `string`[]
+
+### clientConfig.discord.teamLeaderId?
+
+> `optional` **teamLeaderId**: `string`
+
+### clientConfig.discord.teamMemberInterestKeywords?
+
+> `optional` **teamMemberInterestKeywords**: `string`[]
+
 ### clientConfig.telegram?
 
 > `optional` **telegram**: `object`
@@ -342,4 +362,4 @@ Optional Twitter profile
 
 ## Defined in
 
-[packages/core/src/types.ts:609](https://github.com/monilpat/eliza/blob/main/packages/core/src/types.ts#L609)
+[packages/core/src/types.ts:618](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L618)

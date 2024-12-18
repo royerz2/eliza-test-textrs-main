@@ -1,6 +1,6 @@
-[@ai16z/eliza v0.1.5-alpha.5](../index.md) / IPdfService
+[@ai16z/eliza v0.1.5-alpha.5](../index.md) / IAwsS3Service
 
-# Interface: IPdfService
+# Interface: IAwsS3Service
 
 ## Extends
 
@@ -52,27 +52,49 @@ Add abstract initialize method that must be implemented by derived classes
 
 ***
 
-### getInstance()
+### uploadFile()
 
-> **getInstance**(): [`IPdfService`](IPdfService.md)
-
-#### Returns
-
-[`IPdfService`](IPdfService.md)
-
-#### Defined in
-
-[packages/core/src/types.ts:1136](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L1136)
-
-***
-
-### convertPdfToText()
-
-> **convertPdfToText**(`pdfBuffer`): `Promise`\<`string`\>
+> **uploadFile**(`imagePath`, `useSignedUrl`, `expiresIn`): `Promise`\<`object`\>
 
 #### Parameters
 
-• **pdfBuffer**: `Buffer`
+• **imagePath**: `string`
+
+• **useSignedUrl**: `boolean`
+
+• **expiresIn**: `number`
+
+#### Returns
+
+`Promise`\<`object`\>
+
+##### success
+
+> **success**: `boolean`
+
+##### url?
+
+> `optional` **url**: `string`
+
+##### error?
+
+> `optional` **error**: `string`
+
+#### Defined in
+
+[packages/core/src/types.ts:1141](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L1141)
+
+***
+
+### generateSignedUrl()
+
+> **generateSignedUrl**(`fileName`, `expiresIn`): `Promise`\<`string`\>
+
+#### Parameters
+
+• **fileName**: `string`
+
+• **expiresIn**: `number`
 
 #### Returns
 
@@ -80,4 +102,4 @@ Add abstract initialize method that must be implemented by derived classes
 
 #### Defined in
 
-[packages/core/src/types.ts:1137](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L1137)
+[packages/core/src/types.ts:1146](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/types.ts#L1146)

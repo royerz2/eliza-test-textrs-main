@@ -1,4 +1,4 @@
-[@ai16z/eliza v0.1.5-alpha.3](../index.md) / getEndpoint
+[@ai16z/eliza v0.1.5-alpha.5](../index.md) / getEndpoint
 
 # Function: getEndpoint()
 
@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[packages/core/src/models.ts:385](https://github.com/monilpat/eliza/blob/main/packages/core/src/models.ts#L385)
+[packages/core/src/models.ts:474](https://github.com/royerz2/eliza-test-textrs-main/blob/main/packages/core/src/models.ts#L474)
