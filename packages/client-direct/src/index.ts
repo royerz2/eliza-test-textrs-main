@@ -386,33 +386,59 @@ export class DirectClient {
         this.agents.delete(runtime.agentId);
     }
 
-    public start(port: number) {
-        this.server = this.app.listen(port, () => {
-            elizaLogger.success(`Server running at http://localhost:${port}/`);
+    // public start(port: number) {
+    //     this.server = this.app.listen(port, () => {
+    //         elizaLogger.success(`Server running at http://localhost:${port}/`);
+    //     });
+
+    //     // Handle graceful shutdown
+    //     const gracefulShutdown = () => {
+    //         elizaLogger.log("Received shutdown signal, closing server...");
+    //         this.server.close(() => {
+    //             elizaLogger.success("Server closed successfully");
+    //             process.exit(0);
+    //         });
+
+    //         // Force close after 5 seconds if server hasn't closed
+    //         setTimeout(() => {
+    //             elizaLogger.error(
+    //                 "Could not close connections in time, forcefully shutting down"
+    //             );
+    //             process.exit(1);
+    //         }, 5000);
+    //     };
+
+    //     // Handle different shutdown signals
+    //     process.on("SIGTERM", gracefulShutdown);
+    //     process.on("SIGINT", gracefulShutdown);
+    // }
+
+
+    public start() {
+    // Use process.env.PORT provided by Azure Web Apps, or fallback to settings.SERVER_PORT or 3000
+    const serverPort = process.env.PORT ? parseInt(process.env.PORT) : parseInt(settings.SERVER_PORT || "3000");
+
+    this.server = this.app.listen(serverPort, '0.0.0.0', () => {
+        elizaLogger.success(`Server running on port ${serverPort}`);
+    });
+
+    // Handle graceful shutdown
+    const gracefulShutdown = () => {
+        elizaLogger.log("Received shutdown signal, closing server...");
+        this.server.close(() => {
+            elizaLogger.success("Server closed successfully");
+            process.exit(0);
         });
 
-        // Handle graceful shutdown
-        const gracefulShutdown = () => {
-            elizaLogger.log("Received shutdown signal, closing server...");
-            this.server.close(() => {
-                elizaLogger.success("Server closed successfully");
-                process.exit(0);
-            });
+        setTimeout(() => {
+            elizaLogger.error("Could not close connections in time, forcefully shutting down");
+            process.exit(1);
+        }, 5000);
+    };
 
-            // Force close after 5 seconds if server hasn't closed
-            setTimeout(() => {
-                elizaLogger.error(
-                    "Could not close connections in time, forcefully shutting down"
-                );
-                process.exit(1);
-            }, 5000);
-        };
-
-        // Handle different shutdown signals
-        process.on("SIGTERM", gracefulShutdown);
-        process.on("SIGINT", gracefulShutdown);
-    }
-
+    process.on("SIGTERM", gracefulShutdown);
+    process.on("SIGINT", gracefulShutdown);
+}
     public stop() {
         if (this.server) {
             this.server.close(() => {
@@ -422,12 +448,27 @@ export class DirectClient {
     }
 }
 
+// export const DirectClientInterface: Client = {
+//     start: async (_runtime: IAgentRuntime) => {
+//         elizaLogger.log("DirectClientInterface start");
+//         const client = new DirectClient();
+//         const serverPort = parseInt(settings.SERVER_PORT || "3000");
+//         client.start(serverPort);
+//         return client;
+//     },
+//     stop: async (_runtime: IAgentRuntime, client?: any) => {
+//         if (client instanceof DirectClient) {
+//             client.stop();
+//         }
+//     },
+// };
+
+
 export const DirectClientInterface: Client = {
     start: async (_runtime: IAgentRuntime) => {
         elizaLogger.log("DirectClientInterface start");
         const client = new DirectClient();
-        const serverPort = parseInt(settings.SERVER_PORT || "3000");
-        client.start(serverPort);
+        client.start(); // no argument needed
         return client;
     },
     stop: async (_runtime: IAgentRuntime, client?: any) => {
