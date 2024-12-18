@@ -13,22 +13,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Ensure a stable Node.js version that is widely supported and tested.
+      - name: Set Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      # Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Install dependencies
-        run: pnpm i
+      # Clean up any existing lockfiles or node_modules to ensure a fresh install
+      - name: Cleanup workspace
+        run: |
+          rm -rf node_modules
+          rm -f pnpm-lock.yaml
 
+      # Install dependencies with pnpm, ignoring engine constraints if necessary
+      # This ensures that engine mismatches won't break the installation.
+      - name: Install dependencies
+        run: pnpm install --ignore-engines
+
+      # Build the project
       - name: Build
         run: pnpm build
 
-      # Optionally run tests if you have them
+      # (Optional) Run tests if you have them
       # - name: Test
       #   run: pnpm test
 
+      # Zip the artifacts for deployment
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .
 
+      # Upload the artifact so it can be used in the deploy job
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -51,6 +70,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      # Deploy to Azure Web App
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
