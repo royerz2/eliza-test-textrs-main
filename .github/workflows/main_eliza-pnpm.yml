@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - eliza-pnpm
 
 on:
@@ -12,23 +9,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      # Use a stable Node.js version without caching, as we have no npm/yarn lockfile
+      - name: Set Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+          check-latest: true
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # We will not remove pnpm-lock.yaml here. If it exists, it helps ensure consistent installs.
+      # If it doesn't exist yet, pnpm will create it on install.
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      # Optional: run tests if you have any
+      # - name: Test
+      #   run: pnpm test
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -52,7 +59,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
