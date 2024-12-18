@@ -9,45 +9,34 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      # Ensure a stable Node.js version that is widely supported and tested.
+      # Use a stable Node.js version without caching, as we have no npm/yarn lockfile
       - name: Set Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-          cache: 'npm'
+          check-latest: true
 
-      # Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Clean up any existing lockfiles or node_modules to ensure a fresh install
-      - name: Cleanup workspace
-        run: |
-          rm -rf node_modules
-          rm -f pnpm-lock.yaml
-
-      # Install dependencies with pnpm, ignoring engine constraints if necessary
-      # This ensures that engine mismatches won't break the installation.
+      # We will not remove pnpm-lock.yaml here. If it exists, it helps ensure consistent installs.
+      # If it doesn't exist yet, pnpm will create it on install.
       - name: Install dependencies
         run: pnpm install --ignore-engines
 
-      # Build the project
       - name: Build
         run: pnpm build
 
-      # (Optional) Run tests if you have them
+      # Optional: run tests if you have any
       # - name: Test
       #   run: pnpm test
 
-      # Zip the artifacts for deployment
       - name: Zip artifact for deployment
         run: zip -r release.zip .
 
-      # Upload the artifact so it can be used in the deploy job
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -70,7 +59,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      # Deploy to Azure Web App
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
